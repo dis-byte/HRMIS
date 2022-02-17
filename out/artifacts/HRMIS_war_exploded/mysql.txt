@@ -1,0 +1,7 @@
+create table if not exists `teacher`(
+	`id` int UNSIGNED AUTO_INCREMENT,
+	`name` VARCHAR(6) not null comment '姓名',
+	`age` int(3) not null COMMENT '年龄',
+	`gender` VARCHAR(2) not null COMMENT '老师教的科目',
+	primary key (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

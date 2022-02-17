@@ -1,0 +1,57 @@
+错误：
+org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'studentServiceImpl' available
+原因：StudentServiceImpl的首字母写成了小写
+StudentService studentServiceImpl = (StudentService) context.getBean("StudentServiceImpl");
+错误：
+
+
+解决：
+https://blog.csdn.net/qq_42334096/article/details/107597584
+
+application context和lib创建。
+
+错误：
+https://www.cnblogs.com/ccgyyn/p/9858800.html
+原因：？
+错误：
+Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: ""]
+原因：
+
+错误：student属性之一的birthday我给删除了但是allStudent.jsp页面还没删除birthday数据行。
+解决：删除页面上的birthday。
+
+错误:
+Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException
+SQL: delete from hrmis.student where name = ?
+原因：sql写错了。应该时id=${id}.
+ <delete id="deleteStudentById" parameterType="int">
+    delete from hrmis.student where  id= #{id}
+ </delete>
+
+错误：
+10-Jul-2021 10:45:42.638 警告 [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads Web应用程序[HRMIS_war_exploded]似乎启动了一个名为[C3P0PooledConnectionPoolManager[identityToken->1hgeoldai13hg1xa1wup02a|2aa9dc8c]-AdminTaskTimer]的线程，但未能停止它。这很可能会造成内存泄漏。线程的堆栈跟踪：[
+ java.lang.Object.wait(Native Method)
+ java.util.TimerThread.mainLoop(Timer.java:552)
+ java.util.TimerThread.run(Timer.java:505)]
+10-Jul-2021 10:45:42.639 警告 [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads Web应用程序[HRMIS_war_exploded]似乎启动了一个名为[C3P0PooledConnectionPoolManager[identityToken->1hgeoldai13hg1xa1wup02a|2aa9dc8c]-HelperThread-#0]的线程，但未能停止它。这很可能会造成内存泄漏。线程的堆栈跟踪：[
+ java.lang.Object.wait(Native Method)
+ com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:683)]
+10-Jul-2021 10:45:42.639 警告 [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads Web应用程序[HRMIS_war_exploded]似乎启动了一个名为[C3P0PooledConnectionPoolManager[identityToken->1hgeoldai13hg1xa1wup02a|2aa9dc8c]-HelperThread-#1]的线程，但未能停止它。这很可能会造成内存泄漏。线程的堆栈跟踪：[
+ java.lang.Object.wait(Native Method)
+ com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:683)]
+10-Jul-2021 10:45:42.640 警告 [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads Web应用程序[HRMIS_war_exploded]似乎启动了一个名为[C3P0PooledConnectionPoolManager[identityToken->1hgeoldai13hg1xa1wup02a|2aa9dc8c]-HelperThread-#2]的线程，但未能停止它。这很可能会造成内存泄漏。线程的堆栈跟踪：[
+ java.lang.Object.wait(Native Method)
+
+
+错误：
+Field error in object 'teachers' on field 'id': rejected value [];
+codes [typeMismatch.teachers.id,typeMismatch.id,typeMismatch.int,typeMismatch];
+arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [teachers.id,id]; arguments []; default message [id]]; default message [Failed to convert property value of type 'java.lang.String' to required type 'int' for property 'id';
+nested exception is java.lang.NumberFormatException: For input string: ""]]
+原因:<input type="hidden" name="id"  value="${QTeacher.id}">的QTeacher还是QStudent。
+
+错误：
+Application Server was not connected before run configuration stop, reason: com.intellij.javaee.oss.admin.jmx.JmxAdminException: java.util.concurrent.ExecutionException: java.lang.SecurityException: Authentication failed! Invalid username or password
+总结：
+    1、xx.jsp页面名字要与controller层的return “xx” 的引号里面一致。
+    2、sql语句不规范

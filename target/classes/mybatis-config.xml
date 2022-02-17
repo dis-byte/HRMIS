@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--配置数据源，交给spring去做-->
+    <typeAliases>
+        <package name="com.redis.pojo"/>
+    </typeAliases>
+    <!--使用接口信息进行Mapper映射文件配置-->
+    <mappers>
+        <mapper class="com.redis.mapper.StudentMapper"/>
+        <mapper class="com.redis.mapper.TeacherMapper"/>
+
+    </mappers>
+</configuration>

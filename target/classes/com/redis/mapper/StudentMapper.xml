@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace = 全限定类型（mapper包名） + interface接口名-->
+<!--Mapper.xml文件中的namespace与mapper接口的类路径相同。-->
+<mapper namespace="com.redis.mapper.StudentMapper">
+    <insert id="addStudent" parameterType="Students">
+        insert into hrmis.student (name ,age,gender,grade,address,birthday)
+        values (#{name},#{age},#{gender},#{grade},#{address},#{birthday});
+    </insert>
+
+    <delete id="deleteStudentById" parameterType="int">
+        delete from hrmis.student where  id= #{id}
+    </delete>
+
+    <update id="updateStudent" parameterType="Students">
+        update hrmis.student
+        set name = #{name},age = #{age},gender = #{gender},grade = #{grade},address = #{address},birthday = #{birthday}
+        where id = #{id};
+    </update>
+
+
+    <select id="queryStudentById" resultType="Students">
+        select * from hrmis.student where id = #{id}
+    </select>
+    
+    <select id="queryAllStudent" resultType="Students">
+        select * from hrmis.student
+    </select>
+    <select id="queryStudentByName" resultType="Students">
+        select * from hrmis.student where name = #{name}
+    </select>
+</mapper>
